@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import ru.kata.spring.boot_security.demo.dao.UserRepository;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
@@ -12,6 +13,7 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -20,12 +22,15 @@ public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
+    private final UserRepository userRepository;
 
     @Autowired
 
-    public AdminController(UserService userService, RoleService roleService) {
+    public AdminController(UserService userService, RoleService roleService,
+                           UserRepository userRepository) {
         this.userService = userService;
         this.roleService = roleService;
+        this.userRepository = userRepository;
     }
 
 
@@ -46,7 +51,12 @@ public class AdminController {
     }
 
     @PostMapping()
-    public String addUser(@ModelAttribute("person") User user) {
+    public String addUser(@ModelAttribute("person") User user, Map<String, Object> model) {
+        User userFromDb = userRepository.findUserByName(user.getUsername());
+        if(userFromDb != null) {
+            model.put("message", "User exists!");
+            return "admin";
+        }
         userService.addUser(user);
         return "redirect:/admin";
     }
