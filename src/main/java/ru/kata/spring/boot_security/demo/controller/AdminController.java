@@ -10,6 +10,7 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -19,6 +20,7 @@ public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
+
     @Autowired
 
     public AdminController(UserService userService, RoleService roleService) {
@@ -28,16 +30,16 @@ public class AdminController {
 
 
     @GetMapping("")
-    public String showAllUser(ModelMap model, Principal principal) {
-        model.addAttribute("admin", userService.findUserByName(principal.getName()));
+    public String showAllUsers(ModelMap model, Principal principal) {
+        model.addAttribute("admin", userService.loadUserByUsername(principal.getName()));
         model.addAttribute("people", userService.getAllUser());
         model.addAttribute("person", new User());
         model.addAttribute("roles", roleService.getAllRole());
         return "admin";
     }
 
-    @GetMapping("/addNewUser")
-    public String addNewUser(ModelMap model) {
+    @GetMapping("/userInfo")
+    public String userInfo(ModelMap model) {
         model.addAttribute("person", new User());
         model.addAttribute("roles", roleService.getAllRole());
         return "userInfo";
@@ -55,7 +57,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/user-update/{id}")
+    @PutMapping("/user-update/{id}")
     public String updateUser(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("person", userService.findUserById(id));
         List<Role> roles = roleService.getAllRole();

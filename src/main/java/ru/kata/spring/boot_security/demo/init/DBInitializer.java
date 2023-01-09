@@ -33,6 +33,6 @@ public class DBInitializer {
         userService.addUser(new User("admin", "admin@test.com", (byte) 45,
                 "admin", Set.of(new Role(1L, "ROLE_ADMIN"))));
         userService.addUser(new User("user", "user@test.com", (byte) 25,
-                "user", Set.of(new Role(2L,"ROLE_USER"))));
+                "user", Set.of(new Role(2L, "ROLE_USER"))));
     }
 }

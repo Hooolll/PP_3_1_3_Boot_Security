@@ -17,7 +17,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "email", unique = true, nullable = false)
@@ -93,6 +93,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
+
     public String getPassword() {
         return password;
     }
@@ -140,12 +141,7 @@ public class User implements UserDetails {
         if (o == null || getClass() != o.getClass()) return false;
 
         User user = (User) o;
-
-        if (age != user.age) return false;
         if (!Objects.equals(id, user.id)) return false;
-        if (!Objects.equals(name, user.name)) return false;
-        if (!Objects.equals(email, user.email)) return false;
-        if (!Objects.equals(password, user.password)) return false;
         return Objects.equals(roles, user.roles);
     }
 

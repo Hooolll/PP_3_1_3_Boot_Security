@@ -3,9 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Admin panel</title>
-    <link rel="shortcut icon" href="https://www.clipartmax.com/png/full/30-300342_spring-data-team-spring-framework-icon.png">
+    <link rel="shortcut icon"
+          href="https://www.clipartmax.com/png/full/30-300342_spring-data-team-spring-framework-icon.png">
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -23,22 +25,28 @@
     <div class="row">
         <div class="col-2 pt-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Admin</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">User</a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Admin</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
             </div>
         </div>
         <div class="col-10 pt-2 bg-light">
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                     aria-labelledby="v-pills-home-tab">
                     <h1>Admin panel</h1>
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">User table</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">New User</a>
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                               role="tab" aria-controls="nav-home" aria-selected="true">User table</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">New User</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
                             <div class="col-12 bg-light border">
                                 <h5 class="pl-3 pt-2 pb-2">All users</h5>
                             </div>
@@ -63,43 +71,60 @@
                                     <td th:utext="${msg.email}">Email</td>
                                     <td th:utext="${msg.roles}">Role</td>
                                     <td>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit" th:attrappend="data-target=${msg.id}">
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                data-target="#edit" th:attrappend="data-target=${msg.id}">
                                             Edit
                                         </button>
-                                        <div class="modal fade text-center" th:attrappend="id=${msg.id}" id="edit" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
-                                            <form th:action="@{admin}"  method="post">
+                                        <div class="modal fade text-center" th:attrappend="id=${msg.id}" id="edit"
+                                             tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
+                                            <form th:action="@{admin}" method="post">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content ">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="editTitle">Edit user</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body text-center col-12 offset-3 col-md-6 offset-md-3">
                                                             <div class="form-group">
                                                                 <label class="font-weight-bold" for="idEdit">ID</label>
-                                                                <input id="idEdit" class="form-control" th:name="id" th:value="${msg.id}" placeholder="Id" readonly>
+                                                                <input id="idEdit" class="form-control" th:name="id"
+                                                                       th:value="${msg.id}" placeholder="Id" readonly>
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="nameEdit">Name</label>
-                                                                <input id="nameEdit" class="form-control" th:name="name" th:value="${msg.name}" placeholder="Name">
+                                                                <label class="font-weight-bold"
+                                                                       for="nameEdit">Name</label>
+                                                                <input id="nameEdit" class="form-control" th:name="name"
+                                                                       th:value="${msg.name}" placeholder="Name">
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="AgeEdit">Age</label>
-                                                                <input type="number" id="AgeEdit" class="form-control" th:name="age" th:value="${msg.age}" placeholder="Age">
+                                                                <label class="font-weight-bold"
+                                                                       for="AgeEdit">Age</label>
+                                                                <input type="number" id="AgeEdit" class="form-control"
+                                                                       th:name="age" th:value="${msg.age}"
+                                                                       placeholder="Age">
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="emailEdit">Email</label>
-                                                                <input id="emailEdit" class="form-control" th:name="email" th:value="${msg.email}" placeholder="Email">
+                                                                <label class="font-weight-bold"
+                                                                       for="emailEdit">Email</label>
+                                                                <input id="emailEdit" class="form-control"
+                                                                       th:name="email" th:value="${msg.email}"
+                                                                       placeholder="Email">
                                                             </div>
                                                             <div class="form-group text-center">
                                                                 <label class="font-weight-bold" for="passwordEdit">Password</label>
-                                                                <input type="password" id="passwordEdit" class="form-control" th:name="password" th:value="${msg.password}" placeholder="Password">
+                                                                <input type="password" id="passwordEdit"
+                                                                       class="form-control" th:name="password"
+                                                                       th:value="${msg.password}"
+                                                                       placeholder="Password">
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="rolesEdit">Role</label> <br>
-                                                                <select id="rolesEdit" class="form-select" name="roles" multiple size="2" >
+                                                                <label class="font-weight-bold"
+                                                                       for="rolesEdit">Role</label> <br>
+                                                                <select id="rolesEdit" class="form-select" name="roles"
+                                                                        multiple size="2">
                                                                     <option th:each="role: ${roles}"
                                                                             th:text="${role.role}"
                                                                             th:value="${role.id}">
@@ -145,27 +170,38 @@
                                                         <form>
                                                             <div class="form-group text-center">
                                                                 <label class="font-weight-bold" for="id">ID</label>
-                                                                <input id="id" class="form-control" th:value="${msg.id}" disabled>
+                                                                <input id="id" class="form-control" th:value="${msg.id}"
+                                                                       disabled>
                                                             </div>
                                                             <div class="form-group text-center">
                                                                 <label class="font-weight-bold" for="name">Name</label>
-                                                                <input id="name" class="form-control" th:value="${msg.name}" disabled>
+                                                                <input id="name" class="form-control"
+                                                                       th:value="${msg.name}" disabled>
                                                             </div>
                                                             <div class="form-group text-center">
                                                                 <label class="font-weight-bold" for="Age">Age</label>
-                                                                <input type="number" id="Age" class="form-control" th:value="${msg.age}" disabled>
+                                                                <input type="number" id="Age" class="form-control"
+                                                                       th:value="${msg.age}" disabled>
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="email">Email</label>
-                                                                <input id="email" class="form-control" th:value="${msg.email}" disabled>
+                                                                <label class="font-weight-bold"
+                                                                       for="email">Email</label>
+                                                                <input id="email" class="form-control"
+                                                                       th:value="${msg.email}" disabled>
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="Password">Password</label>
-                                                                <input type="password" id="Password" class="form-control" th:value="${msg.password}" disabled>
+                                                                <label class="font-weight-bold"
+                                                                       for="Password">Password</label>
+                                                                <input type="password" id="Password"
+                                                                       class="form-control" th:value="${msg.password}"
+                                                                       disabled>
                                                             </div>
                                                             <div class="form-group text-center">
-                                                                <label class="font-weight-bold" for="roles2">Role</label> <br>
-                                                                <select multiple class="form-control" th:size="${roles.size()}" id="roles2" name="roles2" disabled>
+                                                                <label class="font-weight-bold"
+                                                                       for="roles2">Role</label> <br>
+                                                                <select multiple class="form-control"
+                                                                        th:size="${roles.size()}" id="roles2"
+                                                                        name="roles2" disabled>
                                                                     <option th:each="role: ${roles}"
                                                                             th:text="${role.role}"
                                                                             th:value="${role.id}">
@@ -177,10 +213,14 @@
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
                                                             Close
                                                         </button>
-                                                        <form th:action="@{admin/user-delete/{id}(id=${msg.id})}" th:method="delete"><button type="submit" class="btn btn-danger">Delete</button></form>
+                                                        <form th:action="@{admin/user-delete/{id}(id=${msg.id})}"
+                                                              th:method="delete">
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,22 +237,26 @@
                                 </div>
                                 <div class="col-12 pl-3 pr-3 pt-3 pb-3 border">
                                     <form th:action="@{/admin}" th:object="${person}" method="post">
-                                        <div class="text-center col-12 offset-3 col-md-6 offset-md-3">
-                                            <div class="form-group text-center">
+                                        <div class="text-center col-3 offset-3 col-md-2 offset-md-3">
+                                            <div class="fform-group text-center">
                                                 <label class="font-weight-bold" for="nameNew">Name</label>
-                                                <input id="nameNew" class="form-control" th:field="*{name}" placeholder="Name">
+                                                <input id="nameNew" class="form-control" th:field="*{name}"
+                                                       placeholder="Name">
                                             </div>
                                             <div class="form-group text-center">
                                                 <label class="font-weight-bold" for="AgeNew">Age</label>
-                                                <input type="number" id="AgeNew" class="form-control" th:field="*{age}" placeholder="Age">
+                                                <input type="number" id="AgeNew" class="form-control" th:field="*{age}"
+                                                       placeholder="Age">
                                             </div>
                                             <div class="form-group text-center">
                                                 <label class="font-weight-bold" for="emailNew">Email</label>
-                                                <input id="emailNew" class="form-control" th:field="*{email}" placeholder="Email">
+                                                <input id="emailNew" class="form-control" th:field="*{email}"
+                                                       placeholder="Email">
                                             </div>
                                             <div class="form-group text-center">
                                                 <label class="font-weight-bold" for="passwordNew">Password</label>
-                                                <input type="password" id="passwordNew" class="form-control" th:field="*{password}" placeholder="Password">
+                                                <input type="password" id="passwordNew" class="form-control"
+                                                       th:field="*{password}" placeholder="Password">
                                             </div>
                                             <div class="form-group text-center">
                                                 <label class="font-weight-bold" for="rolesNew">Role</label> <br>
@@ -266,8 +310,14 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
 </html>
