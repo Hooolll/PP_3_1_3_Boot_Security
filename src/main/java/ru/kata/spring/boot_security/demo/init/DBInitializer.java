@@ -17,14 +17,12 @@ public class DBInitializer {
     private final UserService userService;
     private final UserRepository userRepository;
     private final RoleService roleService;
-
     public DBInitializer(UserService userService,
                          UserRepository userRepository, RoleService roleService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.roleService = roleService;
     }
-
     @Transactional
     @PostConstruct
     public void initDB() {
